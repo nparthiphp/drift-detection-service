@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="670" viewBox="0 0 1000 670">
+<defs>
+  <marker id="arrOrange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M1 1L9 5L1 9" fill="none" stroke="#c2540a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M1 1L9 5L1 9" fill="none" stroke="#2f6fed" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrGray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M1 1L9 5L1 9" fill="none" stroke="#555" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M1 1L9 5L1 9" fill="none" stroke="#0f9488" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#1a1a2e" flood-opacity="0.14"/>
+  </filter>
+</defs>
+
+<rect x="0" y="0" width="1000" height="670" fill="#ffffff"/>
+
+<text x="36" y="34" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#1a2b4c">Drift Detection Service — workflow &amp; tiered detection</text>
+<text x="36" y="56" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#5b6b8c">Consumes MetricStream from upstream services; scores through three detectors; emits DriftSignal. Upstream/Downstream are SEPARATE services.</text>
+
+<!-- UPSTREAM -->
+<rect x="40" y="82" width="480" height="110" rx="14" fill="#eef8ee" stroke="#2f9e44" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="56" y="102" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" letter-spacing="0.5" fill="#2f9e44">UPSTREAM · SEPARATE SERVICES</text>
+
+<rect x="56" y="114" width="230" height="58" rx="10" fill="#ffffff" stroke="#2f9e44" stroke-width="1.75" filter="url(#cardShadow)"/>
+<text x="171" y="138" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1a2b4c">Upstream services</text>
+<text x="171" y="158" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#2f9e44">anomaly-service · funnel</text>
+<text x="171" y="182" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-style="italic" fill="#8a8f9c">raw telemetry → metrics</text>
+
+<rect x="340" y="114" width="150" height="58" rx="10" fill="#ffffff" stroke="#c2540a" stroke-width="1.75" filter="url(#cardShadow)"/>
+<text x="415" y="140" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1a2b4c">Kafka</text>
+<text x="415" y="160" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#c2540a">telemetry.metrics</text>
+
+<line x1="286" y1="143" x2="340" y2="143" stroke="#c2540a" stroke-width="1.75" marker-end="url(#arrOrange)"/>
+<rect x="257" y="130" width="112" height="24" rx="12" fill="#fff3ea" stroke="#c2540a" stroke-width="1.25"/>
+<text x="313" y="146" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#c2540a">MetricStream</text>
+
+<path d="M415,172 L415,205 L131,205 L131,255" fill="none" stroke="#c2540a" stroke-width="1.75" marker-end="url(#arrOrange)"/>
+
+<!-- MAIN SERVICE -->
+<rect x="40" y="222" width="900" height="298" rx="18" fill="#f7f6ff" stroke="#4c3fd1" stroke-width="2"/>
+<text x="60" y="248" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5" fill="#4c3fd1">DRIFT DETECTION SERVICE (THIS REPO)</text>
+
+<rect x="60" y="262" width="150" height="62" rx="10" fill="#ffffff" stroke="#4c3fd1" stroke-width="1.75" filter="url(#cardShadow)"/>
+<text x="135" y="288" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1a2b4c">Consumer</text>
+<text x="135" y="308" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#4c3fd1">per stream_id route</text>
+
+<line x1="210" y1="293" x2="248" y2="288" stroke="#2f6fed" stroke-width="1.75" marker-end="url(#arrBlue)"/>
+<line x1="210" y1="293" x2="248" y2="357" stroke="#2f6fed" stroke-width="1.75" marker-end="url(#arrBlue)"/>
+<line x1="210" y1="293" x2="248" y2="426" stroke="#2f6fed" stroke-width="1.75" marker-end="url(#arrBlue)"/>
+
+<rect x="248" y="262" width="180" height="55" rx="10" fill="#ffffff" stroke="#2f6fed" stroke-width="1.75" filter="url(#cardShadow)"/>
+<text x="338" y="284" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1a2b4c">Tier 1 · PSI</text>
+<text x="338" y="303" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#2f6fed">batch distribution shift</text>
+<text x="338" y="330" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-style="italic" fill="#8a8f9c">reference vs. current window</text>
+
+<rect x="248" y="357" width="180" height="55" rx="10" fill="#ffffff" stroke="#2f6fed" stroke-width="1.75" filter="url(#cardShadow)"/>
+<text x="338" y="379" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1a2b4c">Tier 2a · ADWIN</text>
+<text x="338" y="398" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#2f6fed">live concept drift</text>
+<text x="338" y="425" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-style="italic" fill="#8a8f9c">adaptive window, no tuning</text>
+
+<rect x="248" y="426" width="180" height="55" rx="10" fill="#ffffff" stroke="#2f6fed" stroke-width="1.75" filter="url(#cardShadow)"/>
+<text x="338" y="448" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#1a2b4c">Tier 2b · Page-Hinkley</text>
+<text x="338" y="467" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#2f6fed">exact change-point</text>
+<text x="338" y="494" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-style="italic" fill="#8a8f9c">anchors RCA timestamp</text>
+
+<line x1="428" y1="289" x2="480" y2="360" stroke="#2f6fed" stroke-width="1.75" marker-end="url(#arrBlue)"/>
+<line x1="428" y1="384" x2="480" y2="380" stroke="#2f6fed" stroke-width="1.75" marker-end="url(#arrBlue)"/>
+<line x1="428" y1="453" x2="480" y2="400" stroke="#2f6fed" stroke-width="1.75" marker-end="url(#arrBlue)"/>
+
+<rect x="480" y="262" width="180" height="55" rx="10" fill="#ffffff" stroke="#555555" stroke-width="1.75" filter="url(#cardShadow)"/>
+<text x="570" y="284" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1a2b4c">HTTP API</text>
+<text x="570" y="303" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#555555">health · status</text>
+
+<line x1="570" y1="317" x2="570" y2="357" stroke="#555555" stroke-width="1.25" stroke-dasharray="4 3" marker-end="url(#arrGray)"/>
+<rect x="510" y="326" width="120" height="22" rx="11" fill="#ffffff" stroke="#555555" stroke-width="1.1"/>
+<text x="570" y="341" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#555555">observes runtime</text>
+
+<rect x="480" y="357" width="180" height="65" rx="10" fill="#ffffff" stroke="#2f6fed" stroke-width="1.75" filter="url(#cardShadow)"/>
+<text x="570" y="381" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1a2b4c">StreamManager</text>
+<text x="570" y="401" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#2f6fed">any_drift = OR(tiers)</text>
+<text x="570" y="416" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-style="italic" fill="#8a8f9c">score-before-persist</text>
+
+<line x1="660" y1="389" x2="700" y2="389" stroke="#c2540a" stroke-width="1.75" marker-end="url(#arrOrange)"/>
+<rect x="668" y="376" width="98" height="24" rx="12" fill="#fff3ea" stroke="#c2540a" stroke-width="1.25"/>
+<text x="717" y="392" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#c2540a">DriftSignal</text>
+
+<rect x="766" y="360" width="150" height="58" rx="10" fill="#ffffff" stroke="#c2540a" stroke-width="1.75" filter="url(#cardShadow)"/>
+<text x="841" y="384" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1a2b4c">Kafka</text>
+<text x="841" y="404" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#c2540a">drift.signals</text>
+
+<!-- DOWNSTREAM -->
+<line x1="841" y1="418" x2="841" y2="452" stroke="#0f9488" stroke-width="1.75" marker-end="url(#arrTeal)"/>
+<rect x="726" y="452" width="230" height="118" rx="14" fill="#eafaf8" stroke="#0f9488" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="742" y="472" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" letter-spacing="0.5" fill="#0f9488">DOWNSTREAM · SEPARATE SERVICE</text>
+<rect x="742" y="484" width="198" height="70" rx="10" fill="#ffffff" stroke="#0f9488" stroke-width="1.75" filter="url(#cardShadow)"/>
+<text x="841" y="510" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1a2b4c">Reason stage</text>
+<text x="841" y="530" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#0f9488">GraphRAG · LLM retrieval</text>
+<text x="841" y="546" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-style="italic" fill="#8a8f9c">signal → root cause</text>
+
+<!-- WHY BOX -->
+<rect x="40" y="545" width="900" height="110" rx="10" fill="#f4f4f6" stroke="#333333" stroke-width="1.25"/>
+<text x="60" y="571" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" letter-spacing="0.4" fill="#1a1a1a">WHY THREE DETECTORS</text>
+<text x="60" y="592" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#40424a">PSI catches a distribution shift the others miss, while ADWIN catches live concept drift with no window to tune.</text>
+<text x="60" y="610" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#40424a">Page-Hinkley pinpoints the exact change-point for RCA — critical for anchoring a root-cause timeline.</text>
+<text x="60" y="628" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#40424a">Running all three keeps recall high; per-detector thresholds plus the downstream Reason stage manage precision.</text>
+</svg>

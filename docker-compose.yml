@@ -1,0 +1,15 @@
+services:
+  drift-detection-service:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DRIFT_REDIS_URL=redis://redis:6379/0
+      - DRIFT_LOG_LEVEL=INFO
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
