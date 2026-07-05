@@ -150,7 +150,7 @@ All env vars are prefixed `DRIFT_` (see `app/config.py`):
 > without Docker available, so build the image locally (`docker build .`)
 > and smoke-test the container before your first deploy.
 
-## Where this plugs into ARIES
+## Where this plugs into Architecture
 
 Register one stream per metric you already track in your Redis tumbling
 windows or Feast feature store — anomaly scores from `anomaly-service`,
